@@ -1,5 +1,5 @@
 TC = int(input())
-for tc in (1, TC+1):
+for tc in range(1, TC+1):
     ri = [0,1,0,-1]
     ci = [1,0,-1,0]
 
