@@ -19,4 +19,8 @@ TC = int(input())
 for tc in range(1, TC+1):
 
     n = int(input())
+<<<<<<< HEAD
     triangle(n)
+=======
+    triangle(n)
+>>>>>>> 7a996084a1a27ad6d1c9f62d1d7ad998111e3fc6
