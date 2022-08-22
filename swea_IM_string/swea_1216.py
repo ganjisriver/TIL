@@ -7,8 +7,8 @@ for tc in range(1, 11):
         for c in range(100):
             word_list = []
             for i in range(100-c):
-                if matrix[r][c:c+i] == matrix[r][c:c+i][::-1]:
-                    length = i
+                if matrix[r][c:c+i+1] == matrix[r][c:c+i+1][::-1]:
+                    length = len(matrix[r][c:c+i+1])
                     if max_value < length:
                         max_value = length
 
@@ -16,6 +16,8 @@ for tc in range(1, 11):
                 if word_list == word_list[::-1]:
                     if max_value < len(word_list):
                         max_value = word_list
+
+    print(f'#{tc} {max_value}')
 
 
 
