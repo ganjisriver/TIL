@@ -1,5 +1,3 @@
-
-
 TC = int(input())
 for tc in range(1, TC+1):
     N, M, L = map(int, input().split())
@@ -8,10 +6,9 @@ for tc in range(1, TC+1):
         node_number, node_result = map(int, input().split())
         tree_idx[node_number] = node_result
 
-    for i in range(N):
-        if N % 2 == 1:
-            if tree_idx[i] and tree_idx[i//2] == tree_idx[(i+1)//2]:
-                tree_idx[i//2] = tree_idx[i] + tree_idx[i+1]
-        else:
 
-    print(tree_idx)
+        if N % 2 == 0:
+            tree_idx.append(0)
+        for i in range(N, 1, -2):
+            tree_idx[i // 2] = tree_idx[i//2*2] + tree_idx[i//2*2 + 1]
+    print(f'#{tc} {tree_idx[L]}')
