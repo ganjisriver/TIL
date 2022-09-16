@@ -6,7 +6,6 @@ for tc in range(1, TC+1):
         node_number, node_result = map(int, input().split())
         tree_idx[node_number] = node_result
 
-
         if N % 2 == 0:
             tree_idx.append(0)
         for i in range(N, 1, -2):
