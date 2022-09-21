@@ -1,41 +1,3 @@
-def counting(x, y, i):
-    if c == 1:
-        X = x+dx[i]
-        Y = y+dy[i]
-        if X < 0 or Y < 0 or X >= N or Y >= N:
-            return
-        if arr[X][Y] == 2:
-            arr[X][Y] = 1
-            X += dx[i]
-            Y += dy[i]
-            if X < 0 or Y < 0 or X >= N or Y >= N:
-                return
-            if arr[X][Y] == 1:
-                return arr
-            else:
-                X -= dx[i]
-                Y -= dy[i]
-                counting(x, y, i)
-    if c == 2:
-        X = x+dx[i]
-        Y = y+dy[i]
-        if X < 0 or Y < 0 or X >= N or Y >= N:
-            return
-        if arr[X][Y] == 1:
-            arr[X][Y] = 2
-            X += dx[i]
-            Y += dy[i]
-            if X < 0 or Y < 0 or X >= N or Y >= N:
-                return
-            if arr[X][Y] == 2:
-                return arr
-            else:
-                X -= dx[i]
-                Y -= dy[i]
-                counting(X, Y, i)
-
-
-
 dx = [1, -1, 0, 0, 1, 1, -1, -1]
 dy = [0, 0, -1, 1, 1, -1, 1, -1]
 
@@ -51,8 +13,21 @@ for tc in range(1, TC+1):
         y = y-1
         arr[x][y] = c
         for j in range(8):
-            counting(x, y, j)
-    print(arr)
+            X = x + dx[j]
+            Y = y + dy[j]
+            change = []
+            while True:
+                if X < 0 or Y < 0 or X >= N or Y >= N or arr[X][Y] == 0:
+                    change = []
+                    break
+                elif arr[X][Y] == c:
+                    break
+                else:
+                    change.append((X,Y))
+                X, Y  = X+dx[j], Y+dy[j]
+            for rx, ry in change:
+                arr[rx][ry] = c
+
     white = 0
     black = 0
     for i in range(N):
