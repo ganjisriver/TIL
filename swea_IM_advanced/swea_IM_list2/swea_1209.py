@@ -3,7 +3,7 @@ for TC in range(1, 11):
 
     
     
-        arr = [list(map(int, input().split())) for _ in range(100)]
+    arr = [list(map(int, input().split())) for _ in range(100)]
         
     row_max = 0
     
