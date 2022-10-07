@@ -1,8 +1,7 @@
-A, B = map(int, input().split())
-arr = [list(map(int, input().split())) for _ in range(B)]
+N, M = map(int, input().split())
+board = [input() for _ in range(N)]
+for i in range(N-7):
+    for j in range(M-7):
 
-for i in range(A-7):
-    for j in range(B-7):
-        for k in range(i, i+8):
-            for u in range(i, i+8):
-                if arr[i+k][j+u]:
+        for r in range(8):
+            for c in range(8):
