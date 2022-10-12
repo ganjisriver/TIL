@@ -1,41 +1,57 @@
-def counting(x, y):
-    global chance, cnt, K
+# visited를 재귀에 넣어주지 않아서, 답이 1씩 오차가 나는 테스트케이스가 발생함.
+# 재귀에서 visited의 id 값이 겹치는 것을 방지하기 위해서 visited = set(visited)를 통해 visited의 아이디값을 새로 만들어줌.
+
+from collections import deque
+
+
+def counting(x, y, value, chance, length, visited):
+    global answer
+    visited = set(visited)
+    visited.add((x, y))
+
+    if answer < length:
+        answer = length
 
     for i in range(4):
         nx = x + dx[i]
         ny = y + dy[i]
+        if nx < 0 or nx > N-1 or ny < 0 or ny > N-1 or (nx, ny) in visited:
+            continue
+        new_value = MAPS[nx][ny]
 
-        if 0 <= nx < N and 0 <= ny < N:
-            if chance and mountain[nx][ny] - K < mountain[x][y] <= mountain[nx][ny]:
-                chance = 0
-                cnt = cnt + 1
-                counting(nx, ny)
-            elif not chance and mountain[x][y] > mountain[nx][ny]:
-                cnt = cnt +1
-                counting(nx, ny)
+        if chance == 1:
+            if new_value < value:
+                counting(nx, ny, new_value, chance, length+1, visited)
+            for k in range(K, 0, -1):
+                if new_value - k < value:
+                    counting(nx, ny, new_value - k, 0, length+1, visited)
 
+        else:
+            if new_value < value:
+                counting(nx, ny, new_value, 0, length+1, visited)
 
 
 dx = [-1, 1, 0, 0]
-dy = [0, 0, 1, -1]
+dy = [0, 0, -1, 1]
 
 T = int(input())
 for tc in range(1, T+1):
+    answer = 0
     N, K = map(int, input().split())
-    mountain = [list(map(int, input().split()))]
-    top_value = 0
-    mountain_top = []
-    chance = 1
-    cnt = 1
+    MAPS = [list(map(int, input().split())) for _ in range(N)]
+    max_height = 0
+    starting_point = []
     for i in range(N):
         for j in range(N):
-            if top_value < mountain[i][j]:
-                top_value = mountain[i][j]
+            if MAPS[i][j] > max_height:
+                max_height = MAPS[i][j]
+    for i in range(N):
+        for j in range(N):
+            if max_height == MAPS[i][j]:
+                starting_point.append((i, j))
+    for i in range(len(starting_point)):
+        x = starting_point[i][0]
+        y = starting_point[i][1]
+        counting(x, y, max_height, 1, 1, set())
 
-    for r in range(N):
-        for c in range(N):
-            if mountain[r][c] == top_value:
-                mountain_top.append((r, c))
-
-    for i in range(len(mountain_top)):
-        counting(mountain_top[i][0], mountain_top[i][1])
+    print(f'#{tc} {answer}')
