@@ -12,6 +12,8 @@ for tc in range(1, T+1):
         sell = list(map(int, input().split()))
         x = sell[0]
         y = sell[1]
+        amount = sell[2]
+        direction = sell[3]
         current_idx.append((x, y, sell[2], sell[3]))
         # arr[x][y] = [(x, y, sell[2], sell[3])]
 
@@ -19,18 +21,19 @@ for tc in range(1, T+1):
     while chance < time:
         for i in range(len(current_idx)):
             x, y, amount, direction = current_idx.popleft()
-            # arr[x][y] = []
+
             nx = x + dx[direction]
             ny = y + dy[direction]
             if nx == 0 or nx == N-1 or ny == 0 or ny == N-1:
                 current_idx.append((nx, ny, amount//2, transition[direction]))
-                arr[nx][ny].append((nx, ny, amount//2, transition[direction]))
+                # arr[nx][ny].append((nx, ny, amount//2, transition[direction]))
             else:
                 current_idx.append((nx, ny, amount, direction))
         s = len(current_idx)
         for i in range(s):
-            for j in range(i, s-1):
-            if current_idx[i][0]
+            for j in range(i+1, s-1):
+            if current_idx[i][0]:
+
 
 
 
