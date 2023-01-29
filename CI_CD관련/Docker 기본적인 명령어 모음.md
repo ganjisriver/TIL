@@ -4,28 +4,8 @@
 
 - docker exec -it {container-name} bash: 특정 컨테이너 bash 들어가기
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 - 도커 기본 명령어 정리 블로그
   
   [Docker 명령어 정리](https://captcha.tistory.com/49)
+
+good
