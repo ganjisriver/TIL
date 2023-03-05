@@ -43,7 +43,7 @@ def solution2(a):
     return answer
 
 # N차 시도 끝에 성공 (heapq + visited)
-# 역시 고수의 도움을 받는것이 좋다.
+# 역시 고수에게 도움을 받는것이 좋다. 이게 팀이지
 # heapq라는 것에 대해 제대로 알 수 있는 기회였다.
 # a라는 리스트의 길이가 1이나 2일 때는 무조건 모든 풍선이 생존 가능하기 때문에, 그 로직을 써준다.
 # visited 개념은 heapq때문에 써줌.
@@ -62,8 +62,10 @@ def solution(a):
         # 마지막 원소의 원리도 마찬가지다.
         answer += 2
 
-        # right_heap은 초기값이다. 처음에 아래의 for문에서 돌릴 때, a[i]를 기준으로 왼쪽 배열과 오른쪽 배열을 나눠서 비교할 예정이다.
-        # 왼쪽 배열에 있는 원소들의 최소값과 오른쪽 배열에 있는 최소값 중 하나보다는 값이 낮아야 풍선이 생존이 가능하다.
+        # right_heap은 초기값이다. 처음에 아래의 for문에서 돌릴 때,
+        # a[i]를 기준으로 왼쪽 배열과 오른쪽 배열을 나눠서 비교할 예정이다.
+        # 왼쪽 배열에 있는 원소들의 최소값과 오른쪽 배열에 있는 최소값 중
+        # 하나보다는 값이 낮아야 풍선이 생존이 가능하다.
         # 따라서 right_heap은 그 배열들의 초기값이라고 볼 수 있다.
         right_heap = a[2:][:]
 
@@ -77,9 +79,10 @@ def solution(a):
         for i in range(1, len(a)-1):
             if a[i] > min_left and a[i] > min_right: # 왼쪽 배열의 최소값과 오른쪽 배열의 최소값보다 값이 높기 때문에, 생존 불가능하다.
                 pass
-            else: # 왼쪽 배열 또는 오른쪽 배열보다 하나라도 값이 낮다면 그 풍선은 생존할 방법이 존재한다.
+            else: # 왼쪽 배열의 최소값 또는 오른쪽 배열의 최소값보다 하나라도 값이 낮다면 그 풍선은 생존할 방법이 존재한다.
                 answer += 1
 
+            # 이 문제의 핵심은 왼쪽 배열의 최소값과 오른쪽 배열의 최소값을 갱신시켜주는 로직이다.
             if min_left > a[i]: # for문을 통해 돌면서 min_left를 계속 갱신시켜준다.
                 min_left = a[i]
 
@@ -95,7 +98,7 @@ def solution(a):
                     else:
                         min_right = heapq.heappop(right_heap)
                         break
-            # visited에 등록시켜준다.
+            # a[i]에 대한 검증과 왼쪽, 오른쪽 배열 최소값의 갱신이 끝나면, visited에 등록시켜준다.
             visited.add(a[i])
 
     return answer
@@ -103,5 +106,4 @@ def solution(a):
 a1 = [9,10,-1]
 a2 = [-16,27,65,-2,58,-71,-92,-68,-61,-33]
 a3 = [1, 3]
-# print(solution(a1))
-print(solution(a2))
+
