@@ -5,6 +5,6 @@ def solution(n, path, order):
     for i in range(len(path)):
         for j in range(2):
             if j == 0:
-                
+
 
     return answer
