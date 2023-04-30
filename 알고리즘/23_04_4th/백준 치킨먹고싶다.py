@@ -9,7 +9,7 @@ for i in range(T):
     total_chicken_orders = total_money // chicken_price
     more_chicken_coupon = total_chicken_orders // required_coupons*given_coupon
     answer = more_chicken_coupon*given_coupon // required_coupons
-    print(answer)
+print(answer)
 
 
 
