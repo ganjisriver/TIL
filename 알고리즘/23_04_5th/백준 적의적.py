@@ -1,4 +1,4 @@
-# import sys
+import sys
 # from collections import deque
 #
 # N, M = map(int, sys.stdin.readline().split())
@@ -43,3 +43,48 @@
 #     print(1)
 
 
+def find(x):
+    if root[x] == x:
+        return x
+    else:
+        return find(root[x])
+
+
+def union(x, y):
+    x = find(x)
+    y = find(y)
+    if x == y:
+        return
+    if rank[x] > rank[y]:
+        root[y] = x
+
+    elif rank[x] < rank[y]:
+        root[x] = y
+    else:
+        root[y] = x
+        rank[x] = rank[x]+1
+
+
+N, M = map(int, sys.stdin.readline().split())
+root = [i for i in range(N+1)]
+rank = [0 for _ in range(N+1)]
+enemies = [[] for _ in range(N+1)]
+flag = False
+for i in range(M):
+    x, y = map(int, sys.stdin.readline().split())
+    x_root, y_root = find(x), find(y)
+    if enemies[x]:
+        union(enemies[x][0], y)
+    if enemies[y]:
+        union(x, enemies[y][0])
+    if x_root == y_root:
+        flag = True
+        break
+    enemies[x].append(y)
+    enemies[y].append(x)
+
+
+if flag:
+    print(0)
+if not flag:
+    print(1)
