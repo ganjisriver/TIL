@@ -28,13 +28,7 @@ def solution(relationships, target, limit):
                     answer += 11
     return answer
 
-# def find(current_person, friend_root):
-#     if friend_root[current_person] != current_person:
-#         friend_root[current_person] = find(friend_root[current_person])
-#     return friend_root[current_person]
-# def union(friend_one, friend_two):
-#     friend_one_root = find(friend_one)
-#     friend_two_root = find(friend_two)
+
 
 
 print(solution([[1,2], [2,3], [2,6], [3,4], [4,5]], 2, 3))
