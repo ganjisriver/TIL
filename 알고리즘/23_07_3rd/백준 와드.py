@@ -10,13 +10,14 @@ sight_arr = [["#"]*row_length for _ in range(R)]
 current[0], current[1] = current[0] -1, current[1] -1
 command = sys.stdin.readline().strip()
 
+visited = set()
 for i in range(len(command)):
     current_direction = command[i]
     if current_direction == "W":
         ward_alphabet = arr[current[0]][current[1]]
         queue = deque()
         queue.append((current[0], current[1]))
-        visited = set()
+
         while queue:
             ward_current = queue.popleft()
             sight_arr[ward_current[0]][ward_current[1]] = "."
