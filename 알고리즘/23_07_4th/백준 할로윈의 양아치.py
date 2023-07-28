@@ -43,10 +43,26 @@ for i in range(1, len(root)):
         zip_dan[root[i]] = (zip_dan[root[i]][0] + candis_num[i], zip_dan[root[i]][1] + 1)
 zip_dan_list = []
 for i in visited:
-    zip_dan_list.append(zip_dan[root[i]])
+    if zip_dan[root[i]][1] < K:
+        zip_dan_list.append(zip_dan[root[i]])
 zip_dan_list.sort(key=lambda x: (-x[0], x[1]))
-dp = []
+dp = [[(0, 0) for _ in range(len(zip_dan_list)+1)] for _ in range(len(zip_dan_list)+1)]
+dp[0] = [(0, 0)] + zip_dan_list[:]
+for i in range(1, len(dp)):
+    for j in range(1, len(dp)):
+        if i == j:
+            dp[i][j] = dp[i-1][j]
+            continue
+        if (dp[i-1][i][1] + dp[i-1][j][1]) < K:
+            dp[i][j] = (dp[i-1][i][0] + dp[i-1][j][0], dp[i-1][i][1] + dp[i-1][j][1])
+        else:
+            dp[i][j] = dp[i-1][j]
 
-print(f"candis_num: {zip_dan_list}")
-print(f"root: {root}")
-print(f"rank: {rank}")
+answer = 0
+for i in range(len(dp)):
+    if answer < dp[-1][i][0]:
+        answer = dp[-1][i][0]
+print(zip_dan_list)
+print(dp)
+print(answer)
+
