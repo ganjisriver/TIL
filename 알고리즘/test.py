@@ -1,12 +1,18 @@
+def gcb(a, b):
+    if b > a:
+        a, b = b, a
+    while b > 0:
+        a, b = b, (a % b)
+    return a
+
 N = int(input())
-arr = []
-answer = [1]*N
-for i in range(N):
-    weight, height = map(int, input().split())
-    arr.append((weight, height, i))
-arr.sort()
-for i in range(N-1):
-    for j in range(i, N):
-        if arr[i][1] < arr[j][1] and arr[i][0] < arr[j][0]:
-            answer[arr[i][2]] += 1
-print(*answer)
+num_list = list(map(int, input().split()))
+X = int(input())
+answer = 0
+cnt = 0
+for num in num_list:
+    result = gcb(X, num)
+    if result == 1:
+        answer += num
+        cnt += 1
+print(answer/cnt)
