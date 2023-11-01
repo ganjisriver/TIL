@@ -3,7 +3,7 @@ arr = [[[] for _ in range(n)] for _ in range(n)]
 domang_idx_list = []
 sulae_idx = [n//2, n//2, 0]
 for i in range(m):
-    x, y, move_type = map(int ,input().split())
+    x, y, move_type = map(int, input().split())
     arr[x][y].append(move_type)
     domang_idx_list.append([x, y, move_type])
 
