@@ -2,7 +2,7 @@
 
 > ### 몽고 DB 특징 소개
 
-- 몽고 DB 현업자가 나와서 몽고 DB의 특징 등을 유튜버분과 잘 설명해줌.
+- **몽고 DB 특징**
   
   - [개발자가 NoSQL 몽고DB 좋아하는 이유 [토크아이티 세미남268] - YouTube](https://youtu.be/WCzBiv-neDA?si=cmC82KfPPzNLvPJd) 
   
@@ -10,7 +10,7 @@
   
   - 전반적으로 좋은 영상이고, 몽고 DB 특징 파악하기 좋다.
 
-- 몽고 DB와 MySQL 비교
+- **몽고 DB와 MySQL 비교**
   
   - [MongoDB와 MySQL 누가 더 빠를까? - YouTube](https://youtu.be/3axR2Onz1nU?si=ig3W5KgMZakEgyuf)
   
@@ -20,19 +20,24 @@
   
   - 추가적으로 다른 자료, 비교 등을 찾아보면 좋지 않을까 생각이 든다ㅏ.
 
-- 몽고 DB Document 최대 크기가 16MB
+- **몽고 DB Document 최대 크기가 16MB**
   
   - https://velog.io/@redjen/mongodb의-16mb-악마
+  - 몽고DB의 한 다큐먼트가 16MB인 거에 대한 고찰과 고민
 
-- 몽고 DB 정리 레포
+- **몽고 DB 정리 레포**
   
   - [GitHub - Cr0ffle/MongoDB: 몽고DB 완벽 가이드 스터디](https://github.com/Cr0ffle/MongoDB)
 
-- 몽고 DB 스키마 디자인에 대한 고민
+- **몽고 DB 스키마 디자인에 대한 고민**
   
   - [어떻게 mongoDB 스키마 설계를 해야할까?<!-- --> | 감구마 개발블로그](https://gamguma.dev/post/2022/04/mongodb_schema_design)
   
   - [mongoDB Story 3: mongoDB 데이터 모델링 : NHN Cloud Meetup](https://meetup.nhncloud.com/posts/276)
+
+- 몽고 DB 실제 활용 회고
+  
+  - https://velog.io/@kny8092/프로젝트에서-MongoDB를-쓰게-된-이유
 
 > ### 이를 읽으면서 생각이 든 설계 고려사항
 
@@ -63,8 +68,6 @@
   
   - 두 번째로, csv파일에서 발의안 낸 사람을 구분해야하는데, 
 
-
-
 2023-11-07 현재 단계에서의 고민 사항 및 공유 사항
 
 - 공유 사항
@@ -72,8 +75,6 @@
   - 몽고DB에 CSV파일 insert해서 DB에 저장하는 것에 성공
     
     - 기존 40MB가량의 CSV파일이 몽고db의 데이터 압축 기술로 40KB로 1000배 가량 압축되었습니다.
-  
-  - 
 
 - 고민 사항
   
@@ -87,6 +88,10 @@
   
   - 의안당 발의하는 의원이 대표 의원만 들어가 있음
     
-    - 대표 CSV 파일을 
+    - 원하는 의원의 파이프라인 
   
-  - CSV 파일을 
+  - CSV 파일을 가져오는 파이프라인 또는 배치 작업에 대한 고민
+    
+    - 만약 ML팀이 입법 관련한 데이터를 지속적으로 추가를 할 것인데, 해당 주기와 데이터 파이프라인 구축과 같은 것을 어떻게 할 것인가.
+    
+    - 
