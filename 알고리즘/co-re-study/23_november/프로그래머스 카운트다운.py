@@ -33,7 +33,7 @@ def solution(target):
     return answer
 
 
-# author: ganjisriver
+
 # 싱글넘버와 bull 그룹, double, triple 그룹을 나눈 리스트를 반환해준다.
 def create_table():
     single_bull_set, double_triple_set = set(), set()
