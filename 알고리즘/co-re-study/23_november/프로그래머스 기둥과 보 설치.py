@@ -37,7 +37,8 @@ def index_check(frame_info, installed_index, status):
                     # 보를 설치할 때 고려 사항
                     # 1차 양 끝에 하나라도 기둥이 있는지
                     # 2차 양 끝에 둘다 보가 있는지
-                    if status[frame_index[0] - 1][frame_index[1]][1]
+                    if status[frame_index[0] - 1][frame_index[1]][1]:
+                        return
 
                 return True
     return False
